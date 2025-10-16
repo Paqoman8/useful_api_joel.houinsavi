@@ -115,4 +115,37 @@ class ModuleController extends Controller
         }
 
     }
+    public function desactivate(string $id, Request $request)
+    {
+        $module = module::find($id);
+        $current_user = $request->user();
+        $activated_module = user_module::where([
+            ['user_id',$current_user['id']],
+            ['module_id',$id],
+            // ['active', '=', 1],
+        ])->get()->last();
+        // $user_module = user_module::find($activated_module['id']);
+        // $activated_module = user_module::where('module_id','=',$id)->get();
+
+        // if(!$module){
+        //     return response()->json(["Module not found"],404);
+        // }
+        if (!$module) {
+            return response()->json(["Module not found"], 404);
+        }
+
+        if ($activated_module) {
+            $activated_module->delete();
+            return response()->json([
+                // "module activated" => $activated_module,
+                "message" => "Module desactivated..."
+            ], 200);
+        } 
+        else {
+            return response()->json([
+                "message" => "Module is already desactivated..."
+            ], 200);
+        }
+
+    }
 }
