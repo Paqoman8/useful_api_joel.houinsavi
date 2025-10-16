@@ -11,10 +11,18 @@ Route::get('/user', function (Request $request) {
 })
     ->middleware('auth:sanctum');
 
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::post('/register', [AuthController::class, 'register']);
+
 
 Route::apiResource('users', UserController::class)
     ->middleware('auth:sanctum');
+
 Route::apiResource('modules', ModuleController::class)
+    ->middleware('auth:sanctum');
+    
+    Route::post('/modules/{id}/activate',[ModuleController::class, 'activate'])
     ->middleware('auth:sanctum');
 
 
@@ -23,7 +31,3 @@ Route::apiResource('modules', ModuleController::class)
 //     Route::post('login',[AuthController::class, 'login']);
 //     Route::post('register',[AuthController::class, 'register']);
 // });
-
-Route::post('/login', [AuthController::class, 'login']);
-
-Route::post('/register', [AuthController::class, 'register']);

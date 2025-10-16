@@ -12,6 +12,7 @@ class user_module extends Model
     use HasFactory;
 
     protected $fillable = [
+        'id',
         'user_id',
         'module_id',
         'active',
