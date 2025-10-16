@@ -115,7 +115,7 @@ class ModuleController extends Controller
         }
 
     }
-    public function desactivate(string $id, Request $request)
+    public function deactivate(string $id, Request $request)
     {
         $module = module::find($id);
         $current_user = $request->user();

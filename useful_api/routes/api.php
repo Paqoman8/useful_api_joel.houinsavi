@@ -25,7 +25,7 @@ Route::apiResource('modules', ModuleController::class)
 Route::post('/modules/{id}/activate', [ModuleController::class, 'activate'])
     ->middleware('auth:sanctum');
 
-Route::post('/modules/{id}/desactivate', [ModuleController::class, 'desactivate'])
+Route::post('/modules/{id}/deactivate', [ModuleController::class, 'deactivate'])
     ->middleware('auth:sanctum');
 
 
