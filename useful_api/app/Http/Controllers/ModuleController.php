@@ -138,7 +138,7 @@ class ModuleController extends Controller
             $activated_module->delete();
             return response()->json([
                 // "module activated" => $activated_module,
-                "message" => "Module desactivated..."
+                "message" => "Module deactivated..."
             ], 200);
         } 
         else {
