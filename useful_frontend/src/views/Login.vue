@@ -1,5 +1,6 @@
 <script setup>
 import Login from '@/components/connexion/Login.vue';
+import { onMounted } from 'vue';
 import { RouterLink } from 'vue-router';
 
 </script>
